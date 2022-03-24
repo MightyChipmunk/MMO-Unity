@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using System;
 using UnityEngine.EventSystems;
 
-public class UI_Button : UI_Base
+public class UI_Button : UI_Popup
 {
     enum Buttons
     {
@@ -30,6 +30,13 @@ public class UI_Button : UI_Base
 
     private void Start()
     {
+        init();
+    }
+
+    public override void init()
+    {
+        base.init();
+
         Bind<Button>(typeof(Buttons));
         Bind<Text>(typeof(Texts));
         Bind<GameObject>(typeof(GameObjects));
@@ -37,7 +44,7 @@ public class UI_Button : UI_Base
 
         GetButton((int)Buttons.PointButton).gameObject.AddUIEvent(OnButtonClicked);
 
-        GameObject go = GetImage((int)Images.ItemIcon).gameObject;        
+        GameObject go = GetImage((int)Images.ItemIcon).gameObject;
         AddUIEvent(go, (PointerEventData data) => { go.transform.position = data.position; }, Define.UIEvent.Drag);
     }
 
