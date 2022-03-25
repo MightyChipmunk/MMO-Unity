@@ -16,7 +16,7 @@ using UnityEngine;
         Managers.Input.MouseAction += OnMouseClicked;
         // Action을 두번 구독하는 경우가 생기지 않도록 먼저 구독을 끊고 다시 구독을 한다.
 
-        Managers.UI.ShowPopupUI<UI_Button>();
+        Managers.UI.ShowSceneUI<UI_Inven>();
     }
 
     public enum PlayerState
