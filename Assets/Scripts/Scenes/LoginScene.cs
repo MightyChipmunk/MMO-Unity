@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class LoginScene : BaseScene
 {
-    protected override void init()
+    protected override void Init()
     {
-        base.init();
+        base.Init();
 
         SceneType = Define.Scene.Login;
 

@@ -7,6 +7,7 @@ public class Managers : MonoBehaviour
     static Managers s_Instance;
     static Managers Instance { get { Init(); return s_Instance; } }
 
+    DataManager _data = new DataManager();
     InputManager _input = new InputManager();
     PoolManager _pool = new PoolManager();
     ResourceManager _resource = new ResourceManager();
@@ -14,6 +15,7 @@ public class Managers : MonoBehaviour
     SoundManager _sound = new SoundManager();
     UIManager _ui = new UIManager();
 
+    public static DataManager Data { get { return Instance._data; } }
     public static InputManager Input { get { return Instance._input; } }
     public static PoolManager Pool { get { return Instance._pool; } }
     public static ResourceManager Resource { get { return Instance._resource;} }
@@ -44,8 +46,9 @@ public class Managers : MonoBehaviour
             DontDestroyOnLoad(go);
             s_Instance = go.GetComponent<Managers>();
 
-            s_Instance._pool.init();
-            s_Instance._sound.init();
+            s_Instance._data.Init();
+            s_Instance._pool.Init();
+            s_Instance._sound.Init();
         }
     }
 

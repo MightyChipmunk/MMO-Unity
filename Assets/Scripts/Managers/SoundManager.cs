@@ -8,7 +8,7 @@ public class SoundManager
 
     Dictionary<string, AudioClip> _audioClips = new Dictionary<string, AudioClip> ();
       
-    public void init()
+    public void Init()
     {
         GameObject root = GameObject.Find("@Sound");
         if (root == null)

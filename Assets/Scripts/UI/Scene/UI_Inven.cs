@@ -11,12 +11,12 @@ public class UI_Inven : UI_Scene
 
     void Start()
     {
-        init();
+        Init();
     }
 
-    public override void init()
+    public override void Init()
     {
-        base.init();
+        base.Init();
 
         Bind<GameObject>(typeof(GameObjects));
 

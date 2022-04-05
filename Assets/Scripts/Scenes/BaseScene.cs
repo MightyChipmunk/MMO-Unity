@@ -9,10 +9,10 @@ public abstract class BaseScene : MonoBehaviour
 
     void Awake()
     {
-        init();
+        Init();
     }
 
-    protected virtual void init()
+    protected virtual void Init()
     {
         Object obj = GameObject.FindObjectOfType(typeof(EventSystem));
         if (obj == null)
