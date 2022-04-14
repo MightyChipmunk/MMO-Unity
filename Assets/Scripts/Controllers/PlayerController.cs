@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
-    public class PlayerController : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
     [SerializeField]
     float _speed = 10.0f;
@@ -29,7 +30,7 @@ using UnityEngine;
     void UpdateMoving()
     {
         Vector3 dir = _destPos - transform.position;
-        if (dir.magnitude < 0.0001f)
+        if (dir.magnitude < 0.1f)
         {
             _state = PlayerState.Idle;
         } // 목적지까지의 거리가 매우 작다면(도착했다면) 이동중이라는 상태를 false로 만든다.
@@ -38,7 +39,19 @@ using UnityEngine;
             float moveDist = Mathf.Clamp(_speed * Time.deltaTime, 0, dir.magnitude);
             // 목적지 좌표에 도착하고도 계속 rotation을 변경하며 목적지에 가려는 상황을 없애기 위해 
             // 목적지 까지의 거리보다 속도가 높아지면 속도를 0으로 만든다.
-            transform.position += dir.normalized * moveDist;
+            NavMeshAgent nma = gameObject.GetOrAddComponent<NavMeshAgent>();
+
+            nma.Move(dir.normalized * moveDist);
+
+            Debug.DrawRay(transform.position + Vector3.up * 0.5f, dir.normalized, Color.green);
+            if(Physics.Raycast(transform.position + Vector3.up * 0.5f, dir, 1.0f, LayerMask.GetMask("Block")))
+            {
+                _state = PlayerState.Idle;
+                Debug.Log("HIt");
+                return;
+            }
+
+            // transform.position += dir.normalized * moveDist;
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(dir), 10 * Time.deltaTime);
         }
 
@@ -83,7 +96,7 @@ using UnityEngine;
             return;
 
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        Debug.DrawRay(Camera.main.transform.position, ray.direction * 100.0f, Color.red, 1.0f);
+        // Debug.DrawRay(Camera.main.transform.position, ray.direction * 100.0f, Color.red, 1.0f);
 
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit, 100.0f, LayerMask.GetMask("Wall")))
