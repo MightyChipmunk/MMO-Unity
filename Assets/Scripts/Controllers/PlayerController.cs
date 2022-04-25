@@ -55,6 +55,7 @@ public class PlayerController : MonoBehaviour
         Managers.Input.MouseAction -= OnMouseEvent;
         Managers.Input.MouseAction += OnMouseEvent;
         // Action을 두번 구독하는 경우가 생기지 않도록 먼저 구독을 끊고 다시 구독을 한다.
+        Managers.UI.MakeWorldSpaceUI<UI_HPBar>(transform);
     }
 
     void UpdateMoving()
@@ -121,6 +122,15 @@ public class PlayerController : MonoBehaviour
 
     void OnHitEvent()
     {
+        if (_lockTarget != null)
+        {
+            Stat targetStat = _lockTarget.GetComponent<Stat>();
+            Stat myStat = gameObject.GetComponent<PlayerStat>();
+            int damage = Mathf.Max(0, myStat.Attack = targetStat.Defense);
+            Debug.Log("Damage");
+            targetStat.Hp -= damage;
+        }
+
         if (_stopSkill)
         {
             State = PlayerState.Idle;

@@ -81,9 +81,10 @@
     <Compile Include="Assets\Scripts\UI\UI_EventHandler.cs" />
     <Compile Include="Assets\Scripts\Data\Data.Contents.cs" />
     <Compile Include="Assets\Scripts\Controllers\PlayerController.cs" />
+    <Compile Include="Assets\Scripts\Controllers\CursorController.cs" />
     <Compile Include="Assets\Scripts\Utils\Define.cs" />
     <Compile Include="Assets\Scripts\Managers\UIManager.cs" />
-    <Compile Include="Assets\Scripts\Controllers\CursorController.cs" />
+    <Compile Include="Assets\Scripts\UI\WorldSpace\UI_HPBar.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Resources\Art\UnityChan\Shader\Unitychan_chara_fuku.shader" />
