@@ -76,6 +76,7 @@
     <Compile Include="Assets\Scripts\Contents\Stat.cs" />
     <Compile Include="Assets\Scripts\Managers\SoundManager.cs" />
     <Compile Include="Assets\Scripts\Contents\PlayerStat.cs" />
+    <Compile Include="Assets\Scripts\UI\WorldSpace\UI_HPBar.cs" />
     <Compile Include="Assets\Scripts\Scenes\LoginScene.cs" />
     <Compile Include="Assets\Scripts\Managers\SceneManagerEx.cs" />
     <Compile Include="Assets\Scripts\UI\UI_EventHandler.cs" />
@@ -84,7 +85,8 @@
     <Compile Include="Assets\Scripts\Controllers\CursorController.cs" />
     <Compile Include="Assets\Scripts\Utils\Define.cs" />
     <Compile Include="Assets\Scripts\Managers\UIManager.cs" />
-    <Compile Include="Assets\Scripts\UI\WorldSpace\UI_HPBar.cs" />
+    <Compile Include="Assets\Scripts\Controllers\MonsterController.cs" />
+    <Compile Include="Assets\Scripts\Controllers\BaseController.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Resources\Art\UnityChan\Shader\Unitychan_chara_fuku.shader" />
