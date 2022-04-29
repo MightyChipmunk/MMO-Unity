@@ -35,7 +35,6 @@ public class Managers : MonoBehaviour
     {
         Init();
     }
-
     void Update()
     {
         _input.OnUpdate();

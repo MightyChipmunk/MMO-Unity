@@ -33,4 +33,26 @@ public class Stat : MonoBehaviour
         _defense = 5;
         _moveSpeed = 5.0f;
     }
+
+    public virtual void OnAttacked(Stat attacker)
+    {
+        int damage = Mathf.Max(0, attacker.Attack - Defense);
+        Hp -= damage;
+        if (Hp <= 0)
+        {
+            Hp = 0;
+            OnDead(attacker);
+        }
+    }
+
+    protected virtual void OnDead(Stat attacker)
+    {
+        PlayerStat playerStat = attacker as PlayerStat;
+        if (playerStat != null) // PlayerStat이 null이라는 것은 attacker가 몬스터라는 의미
+        {
+            playerStat.Exp += 10;
+        }
+
+        Managers.Game.Despawn(gameObject);
+    }
 }
