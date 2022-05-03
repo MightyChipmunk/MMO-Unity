@@ -11,7 +11,7 @@ public class GameScene : BaseScene
 
         SceneType = Define.Scene.Game;
 
-        Managers.UI.ShowSceneUI<UI_Inven>();
+        //Managers.UI.ShowSceneUI<UI_Inven>();
 
         Dictionary<int, Data.Stat> dict = Managers.Data.StatDict;
 
@@ -19,7 +19,10 @@ public class GameScene : BaseScene
 
         GameObject player = Managers.Game.Spawn(Define.WorldObject.Player, "UnityChan");
         Camera.main.gameObject.GetOrAddComponent<CameraController>().SetPlayer(player);
-        Managers.Game.Spawn(Define.WorldObject.Monster, "DogPolyart");
+        //Managers.Game.Spawn(Define.WorldObject.Monster, "DogPolyart");
+        GameObject go = new GameObject { name = "SpawningPool" };
+        SpawningPool pool = go.GetOrAddComponent<SpawningPool>();
+        pool.SetKeepMonsterCount(5);
     }
 
     public override void Clear()
